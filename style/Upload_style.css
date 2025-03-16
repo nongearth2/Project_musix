@@ -1,0 +1,128 @@
+
+
+.cardUpload {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.text-upload{
+ text-align: center;
+ color: black;
+}
+.text-status{
+  color: black;
+}
+.btn-upload{
+  background-color: #00b609;
+  transition: background-color 0.3s ease;
+}
+.btn-upload:hover {
+  background-color: rgb(0, 148, 37);
+}
+.form-label {
+  margin-bottom: 10px;
+}
+.form-floating {
+  margin-bottom: 20px;
+}
+
+header.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(
+    to right,
+    rgba(93, 173, 226, 1),
+    /* ฟ้าสดใส */ rgba(52, 152, 219, 1),
+    /* น้ำเงินอ่อน */ rgba(46, 204, 113, 1) /* เขียวอ่อน */
+  );
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+.navbar-background {
+  /* background: linear-gradient(
+    to right,
+    rgb(33, 76, 97),
+     rgb(12, 34, 51),
+     rgb(0, 64, 28) 
+  ); */
+  background-color: #13502c;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), /* เงาหลัก */
+              0 4px 6px rgba(0, 0, 0, 0.1); /* เงาเสริม */
+}
+.navbar-nav .nav-link {
+  display: flex;
+  align-items: center;
+  height: 100%; /* ทำให้เนื้อหาเมนูอยู่ในระดับเดียวกับรูปโปรไฟล์ */
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.menu a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 15px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.menu a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  padding-top: 80px;
+}
+.dropdown-menu {
+  background-color: rgba(129, 129, 129, 0.2) !important;
+  border: none !important; /* ลบเส้นขอบ */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important; /* เพิ่มเงา */
+}
+.dropdown-item {
+  color: #ffffff !important;
+}
+.dropdown-item:hover {
+  color: #0056b3 !important;
+}
+
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .profile-pic {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .profile-pic {
+    width: 45px;
+    height: 45px;
+  }
+}

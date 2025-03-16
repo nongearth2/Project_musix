@@ -1,0 +1,168 @@
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .profile-pic {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .profile-pic {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* ปรับปรุงลักษณะของปุ่ม */
+.btn-startMusic {
+  background-color: #007bff;
+  border-color: #007bff;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-startMusic:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+.btn-stopMusic {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-stopMusic:hover {
+  background-color: #5a6268;
+  border-color: #4e555b;
+}
+
+/* ปรับปรุงลักษณะของสไลด์เดอร์ */
+
+.form-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  background: #ddd;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  width: 200px; /* ความกว้างของสไลด์เดอร์ */
+}
+
+.form-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #007bff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #007bff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.form-label {
+  font-size: 40px;
+  font-weight: 500;
+}
+.form-label-volum {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.slider {
+  --slider-width: 100%;
+  --slider-height: 15px;
+  --slider-bg: rgba(82, 82, 82, 0.322);
+  --slider-border-radius: 5px;
+
+  --level-color: #00ff62;
+  --level-transition-duration: 5s;
+  --icon-margin: 15px;
+  --icon-color: var(--slider-bg);
+  --icon-size: 30px;
+}
+.icon-volum {
+  font-size: 25px; /* กำหนดขนาดของไอคอน */
+  color: #020202; /* สีของไอคอน */
+  border: 3px solid #2ecc71; /* เพิ่มกรอบสีที่หนา 3px ด้วยสี #004085 */
+  border-radius: 50%; /* ทำให้กรอบมีลักษณะกลม */
+  padding: 10px; /* เพิ่มระยะห่างภายในกรอบเพื่อให้ไอคอนไม่ชิดกรอบ */
+  display: inline-block; /* ให้ไอคอนแสดงเป็นบล็อกในบรรทัดเดียว */
+}
+
+.slider {
+  position: relative;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.slider .volume {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: var(--icon-margin);
+  color: var(--icon-color);
+  width: var(--icon-size);
+  height: auto;
+  position: absolute;
+  left: 18px;
+  pointer-events: none;
+  transition-duration: 0.5s;
+}
+
+.slider .level {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: var(--slider-width);
+  height: var(--slider-height);
+  background: var(--slider-bg);
+  overflow: hidden;
+  border-radius: var(--slider-border-radius);
+  -webkit-transition: height var(--level-transition-duration);
+  -o-transition: height var(--level-transition-duration);
+  transition: height var(--level-transition-duration);
+  cursor: inherit;
+}
+
+.slider .level::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 0px;
+  height: 0px;
+  -webkit-box-shadow: -200px 0 0 200px var(--level-color);
+  box-shadow: -100px 0 5px 100px var(--level-color),
+    -100px 0px 20px 100px var(--level-color);
+}
+.slider .level:hover ~ .volume {
+  color: var(--level-color);
+  opacity: 0.6;
+}
+
+.slider .level::-moz-range-thumb {
+  width: 0;
+  height: 0;
+  border-radius: 0;
+  border: none;
+  box-shadow: -100px 0 5px 100px var(--level-color),
+    -100px 0px 20px 100px var(--level-color);
+}

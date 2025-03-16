@@ -1,0 +1,234 @@
+body {
+  color: #ffffff;
+  background: linear-gradient(
+    to right,
+    rgba(93, 173, 226, 1),
+    /* ฟ้าสดใส */ rgba(52, 152, 219, 1),
+    /* น้ำเงินอ่อน */ rgba(46, 204, 113, 1) /* เขียวอ่อน */
+  );
+  font: 300 1em "Fira Sans", sans-serif;
+  text-align: center;
+  min-height: 100vh;
+  margin-top: 60px;
+}
+.navbar-background {
+  /* background: linear-gradient(
+    to right,
+    rgb(33, 76, 97),
+     rgb(12, 34, 51),
+     rgb(0, 64, 28) 
+  ); */
+  background-color: #13502c;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2),
+    /* เงาหลัก */ 0 4px 6px rgba(0, 0, 0, 0.1); /* เงาเสริม */
+}
+button {
+  /* กำหนดค่าเริ่มต้นของปุ่ม */
+  color: #ffffff; /* สีข้อความเป็นสีขาว */
+  background: #27ae60; /* สีพื้นหลังเป็นสีเขียวสด */
+  border: 2px solid #27ae60; /* สีขอบเป็นสีเขียวสด */
+  font: inherit;
+  line-height: 1;
+  margin: 0.5em;
+  padding: 1em 2em;
+  border-radius: 5px; /* มุมโค้งให้ปุ่มดูนุ่มนวล */
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease; /* เพิ่มการเปลี่ยนแปลงแบบนุ่มนวล */
+}
+
+button:hover,
+button:focus {
+  color: #ffffff; /* สีข้อความเมื่อ hover หรือ focus */
+  background-color: #2ecc71; /* สีพื้นหลังเมื่อ hover หรือ focus (เขียวอ่อน) */
+  border-color: #2ecc71; /* สีขอบเมื่อ hover หรือ focus (เขียวอ่อน) */
+}
+
+.category-buttons {
+  margin-bottom: 15px;
+}
+.label-category {
+  color: #ffffff; /* สีฟอนต์ */
+  font-weight: bold; /* ฟอนต์หนา */
+  font-size: 40px; /* ขนาดฟอนต์ */
+}
+/* ส่วนของการแต่งตรงที่เล่นเสียง */
+
+#audioControls {
+  display: flex;
+  justify-content: center; /* จัดให้อยู่กึ่งกลางแนวนอน */
+  flex-wrap: wrap; /* ถ้ามีหลายเสียงจนเกินไป ให้บรรทัดใหม่เกิดขึ้น */
+  gap: 20px; /* ระยะห่างระหว่างแต่ละ sound-item */
+  padding: 20px; /* เพิ่ม padding รอบๆ */
+}
+
+.sound-item {
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid rgba(70, 99, 255, 0.4); /* เปลี่ยนสีขอบให้ดูเบาลง */
+  border-radius: 10px; /* มุมโค้งให้ดูนุ่มนวล */
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: #ffffff; /* สีพื้นหลังของ sound-item */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้ดูมีมิติ */
+  transition: background-color 0.3s, border-color 0.3s; /* เพิ่มการเปลี่ยนแปลงแบบนุ่มนวล */
+}
+
+.sound-item:hover,
+.sound-item:focus {
+  background-color: rgba(
+    61,
+    166,
+    252,
+    0.3
+  ); /* สีพื้นหลังเมื่อ hover หรือ focus */
+  border-color: #0044ff; /* สีขอบเมื่อ hover หรือ focus */
+}
+
+.sound-item.selected {
+  border-color: #3cff00; /* สีขอบเมื่อเลือก (เขียวสด) */
+}
+
+.sound-image {
+  width: 100px; /* ขนาดความกว้างของรูปภาพ */
+  height: 100px; /* ขนาดความสูงของรูปภาพ */
+  object-fit: cover; /* เพื่อให้รูปภาพไม่บิดเบือน */
+  cursor: pointer;
+  margin-right: 10px;
+  border-radius: 5px; /* มุมโค้งของรูปภาพ */
+}
+
+.volume-slider {
+  margin: 0 10px;
+  width: 100px;
+}
+
+.volume-percentage {
+  font-size: 12px;
+  margin-left: 5px;
+  color: #2c3e50; /* สีข้อความที่เข้ากับบรรยากาศ */
+}
+
+/* สไตล์สำหรับเสียงที่กำลังเล่น */
+.sound-item.playing {
+  border: 2px solid #00ff00; /* กำหนดเส้นขอบสีเขียวเพื่อแสดงว่าเสียงกำลังเล่น */
+  box-shadow: 0 0 15px rgba(27, 255, 34, 0.7); /* เพิ่มเงาเพื่อให้ดูโดดเด่น */
+}
+
+/* สไตล์สำหรับ hover เมื่อเสียงเล่น */
+.sound-item.playing:hover {
+  background-color: #f0f8f0; /* เปลี่ยนพื้นหลังเมื่อ hover */
+}
+
+/* สไตล์สำหรับเสียงที่ถูกเลือก */
+.sound-item.selected {
+  border: 2px solid #09ff00; /* สีของกรอบเมื่อเสียงถูกเลือก */
+}
+
+/* สไตล์สำหรับภาพเสียง */
+.sound-image {
+  width: 100px;
+  height: 100px;
+  transition: transform 0.2s ease;
+}
+
+.sound-image:hover {
+  transform: scale(1.1); /* ขยายขนาดเมื่อ hover */
+}
+.disabled-sound {
+  opacity: 0.5; /* ทำให้ภาพมีความโปร่งใส */
+  filter: grayscale(100%); /* ทำให้ภาพเป็นสีเทา */
+}
+/* ------------------------------------- */
+/* เปลี่ยนสีฟอนต์ของ Dropdown Menu */
+
+.dropdown-menu {
+  background-color: rgba(129, 129, 129, 0.2) !important;
+  border: none !important; /* ลบเส้นขอบ */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important; /* เพิ่มเงา */
+}
+.dropdown-item {
+  color: #ffffff !important;
+}
+.dropdown-item:hover {
+  color: #0056b3 !important;
+}
+
+header.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(
+    to right,
+    rgba(93, 173, 226, 1),
+    /* ฟ้าสดใส */ rgba(52, 152, 219, 1),
+    /* น้ำเงินอ่อน */ rgba(46, 204, 113, 1) /* เขียวอ่อน */
+  );
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+.navbar-nav .nav-link {
+  display: flex;
+  align-items: center;
+  height: 100%; /* ทำให้เนื้อหาเมนูอยู่ในระดับเดียวกับรูปโปรไฟล์ */
+}
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.menu a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 15px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.menu a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  padding-top: 80px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .profile-pic {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .profile-pic {
+    width: 45px;
+    height: 45px;
+  }
+}

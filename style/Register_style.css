@@ -1,0 +1,33 @@
+.gradient-custom {
+  /* สำหรับรันใน Edge Firefox chrome เป็นต้น*/
+  background: linear-gradient(
+    to right,
+    rgba(93, 173, 226, 1),
+    /* ฟ้าสดใส */ rgba(52, 152, 219, 1),
+    /* น้ำเงินอ่อน */ rgba(46, 204, 113, 1) /* เขียวอ่อน */
+  );
+}
+.is-invalid {
+  border-color: red; /* ทำให้ขอบเป็นสีแดงเมื่อมีข้อผิดพลาด */
+}
+.text-danger {
+  color: red; /* สีแดงสำหรับข้อความแจ้งเตือน */
+}
+
+.position-relative {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 37%; /* จัดให้อยู่ตรงกลางแนวตั้ง */
+  right: 15px; /* จัดให้ห่างจากขอบขวา */
+  transform: translateY(-50%); /* แก้ไขการจัดให้อยู่ตรงกลาง */
+  color: #6c757d;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.toggle-password:hover {
+  color: #007bff;
+}

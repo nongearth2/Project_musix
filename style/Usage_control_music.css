@@ -1,0 +1,234 @@
+body {
+  color: #ffffff;
+  background: linear-gradient(
+    to right,
+    rgba(93, 173, 226, 1),
+    /* ฟ้าสดใส */ rgba(52, 152, 219, 1),
+    /* น้ำเงินอ่อน */ rgba(46, 204, 113, 1) /* เขียวอ่อน */
+  );
+  font: 300 1em "Fira Sans", sans-serif;
+  text-align: center;
+  min-height: 100vh;
+  margin-top: 60px;
+}
+.navbar-background {
+  /* background: linear-gradient(
+    to right,
+    rgb(33, 76, 97),
+     rgb(12, 34, 51),
+     rgb(0, 64, 28) 
+  ); */
+  background-color: #13502c;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2),
+    /* เงาหลัก */ 0 4px 6px rgba(0, 0, 0, 0.1); /* เงาเสริม */
+}
+.navbar-nav .nav-link {
+  display: flex;
+  align-items: center;
+  height: 100%; /* ทำให้เนื้อหาเมนูอยู่ในระดับเดียวกับรูปโปรไฟล์ */
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  padding-top: 80px;
+}
+.container {
+  max-width: 1200px;
+  margin-top: 50px;
+}
+.card {
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.category-section {
+  margin-bottom: 30px;
+}
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #4caf50; /* สีเขียวเมื่อเปิดใช้งาน */
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider-red {
+  background-color: #f44336; /* สีแดงเมื่อปิดใช้งาน */
+}
+
+.sound-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sound-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.play-button,
+.stop-button {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+}
+
+.volume-slider {
+  margin-left: 10px;
+  width: 100px;
+}
+.sound-list {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 10px 0;
+  gap: 10px;
+}
+.sound-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.sound-item:hover {
+  transform: scale(1.05);
+}
+.sound-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+.faded {
+  opacity: 0.5; /* ทำให้ภาพจางลง */
+  filter: grayscale(100%); /* ทำให้ภาพเป็นขาวดำ */
+}
+audio {
+  display: none;
+}
+.controls {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-control {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.volume-control {
+  margin-left: 10px;
+}
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.menu a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 15px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.menu a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.dropdown-menu {
+  background-color: rgba(129, 129, 129, 0.2) !important;
+  border: none !important; /* ลบเส้นขอบ */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important; /* เพิ่มเงา */
+}
+.dropdown-item {
+  color: #ffffff !important;
+}
+.dropdown-item:hover {
+  color: #0056b3 !important;
+}
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .profile-pic {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .profile-pic {
+    width: 45px;
+    height: 45px;
+  }
+}

@@ -1,0 +1,263 @@
+.btn-SoundMix{
+  background-color: #00b609;
+}
+.btn-SoundMix:disabled{
+  background-color: #919191;
+}
+/* สไตล์ของ .textMix-header และ .LabelMix */
+.textMix-header, .LabelMix {
+  align-items: center;
+  color: #000;
+}
+
+/* การปรับแต่ง cardMix */
+.cardMix {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px; /* เพิ่มช่องว่างด้านล่าง */
+  position: relative;
+}
+
+/* การจัดการการแสดงผลของ star */
+.star-container {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  margin-right: 10px;
+}
+
+.star {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-image: url("../image/star.png"); /* ใช้ไฟล์โลคอล */
+  background-size: cover;
+  transition: transform 0.2s ease;
+}
+
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]:checked + .star {
+  background-image: url("../image/star2.png"); /* ใช้ไฟล์โลคอล */
+  transform: scale(1.2);
+}
+
+/* เพิ่มการแสดงผลเมื่อ hover */
+.star-container:hover .star {
+  transform: scale(1.1);
+}
+
+/* การจัดการกับเสียง */
+.soundMix-item {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  flex: 0 1 300px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.soundMix-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+/* การจัดการกับ Volume Slider */
+.volume-slider {
+  margin-left: auto;
+  width: 100px;
+}
+
+.form-check-input {
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+/* การจัดระเบียบรายการใน SoundMix */
+.soundMix-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* สไตล์การแสดงผลของปุ่มเล่น/หยุด */
+.play-stop-button {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  margin: 5px;
+  border: none;
+  background: none;
+}
+
+/* ปรับให้ปุ่มเล่น/หยุดมีขนาดใหญ่ขึ้นเมื่อ hover */
+.play-stop-button:hover {
+  color: #007bff;
+  transform: scale(1.2);
+}
+
+/* สไตล์ของ volume control */
+#volume-control {
+  width: 200px;
+}
+
+.volume-slider {
+  width: 100px;
+}
+
+/* การแสดงป๊อปอัพ */
+#list-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  z-index: 1000;
+}
+
+#list-popup form {
+  background-color: #333;
+  padding: 20px;
+  margin: 50px auto;
+  max-width: 400px;
+  border-radius: 5px;
+}
+
+#overlay {
+  display: none;
+}
+
+
+.cardMix {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+/* Style for the button on the top-right */
+
+.d-gridMix {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.d-gridMix input {
+  max-width: 150px;
+}
+
+
+.d-gridMix.mt-4 {
+  margin-top: 20px;
+  text-align: center; 
+}
+
+.d-gridMix.mt-4 input {
+  width: 100%; 
+  max-width: 200px; 
+}
+.scroll-to-top-btn {
+    position: fixed;
+    bottom: -60px; /* เริ่มต้นปุ่มจะอยู่ด้านล่างสุด */
+    right: 20px;
+    transition: bottom 0.3s ease; /* การเลื่อนขึ้น/ลง */
+    background-color: rgb(181, 250, 154); /* สีพื้นหลังเป็นแบบใส */
+    color: rgb(0, 0, 0);
+    border: 2px solid #13ad37; /* กรอบสีเขียว */
+    padding: 10px 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.scroll-to-top-btn:hover {
+    background-color: #28a745; /* เปลี่ยนสีพื้นหลังเป็นสีเขียวเมื่อhover */
+    color: white; /* เปลี่ยนสีตัวอักษรให้เป็นสีขาว */
+}
+
+.scroll-to-top-btn button {
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+.scroll-to-top-btn.show {
+  bottom: 190px; /* เพิ่มค่าให้ปุ่มขึ้นมาจากด้านล่างมากขึ้น */
+}
+
+
+/* Media Queries สำหรับหน้าจอมือถือ */
+@media (max-width: 768px) {
+  /* ปรับขนาด cardMix */
+  .cardMix {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  /* ปรับ layout ของ SoundMix */
+  .soundMix-item {
+    flex: 0 1 100%; /* ให้ขยายเต็มความกว้าง */
+    margin-right: 0;
+  }
+
+  /* ปรับให้ปุ่ม play-stop button เล็กลงในมือถือ */
+  .play-stop-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* เพิ่มช่องว่างระหว่างรายการใน SoundMix */
+  .soundMix-list {
+    gap: 10px; /* ลดช่องว่าง */
+  }
+
+  /* ปรับขนาดของ Volume Slider */
+  .volume-slider {
+    width: 80px;
+  }
+
+  /* ปรับขนาดฟอนต์ของข้อความใน modal */
+  #list-popup form {
+    max-width: 90%;
+  }
+}
+
+
+
+@media (max-width: 480px) {
+  /* ลดขนาดของ textMix-header และ LabelMix สำหรับหน้าจอมือถือ */
+  .textMix-header, .LabelMix {
+    font-size: 18px;
+  }
+
+  /* ปรับ layout ของ star container */
+  .star-container {
+    margin-right: 5px; /* ลดระยะห่าง */
+  }
+
+  /* ปรับขนาดของ star */
+  .star {
+    width: 25px;
+    height: 25px;
+  }
+}

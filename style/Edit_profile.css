@@ -1,0 +1,199 @@
+.gradient-custom-2 {
+  color: #ffffff;
+  background: linear-gradient(
+    to right,
+    rgba(93, 173, 226, 1),
+    /* ฟ้าสดใส */ rgba(52, 152, 219, 1),
+    /* น้ำเงินอ่อน */ rgba(46, 204, 113, 1) /* เขียวอ่อน */
+  );
+  font: 300 1em "Fira Sans", sans-serif;
+
+  min-height: 100vh;
+  margin: 0;
+}
+
+/*แก้ปุ่ม ของปุ่มเปลียนรุูป*/
+.btn-custom {
+  background-color: #007bff; /* เปลียนสีปุ่ม */
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #0056b3; /* เปลียนสีเวลาชี้ */
+  color: white;
+}
+
+.btn-custom:focus,
+.btn-custom:active {
+  box-shadow: none; /* เงา */
+  outline: none;
+}
+/*------------------------------------*/
+/*แก้ปุ่ม ของปุ่มเปลียนรุูป*/
+.btn-edit {
+  background-color: #007bff; /* เปลียนสีปุ่ม */
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 5px;
+  padding: 0px 6px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-edit:hover {
+  background-color: #0056b3; /* เปลียนสีเวลาชี้ */
+  color: rgb(110, 110, 110);
+}
+
+.btn-edit:focus,
+.btn-edit:active {
+  box-shadow: none; /* เงา */
+  outline: none;
+}
+/*------------------------------------*/
+
+/*สีปุ่ม ของปุ่มเปลียนสี*/
+.btn-custom-color {
+  background-color: #3d3d3d; /* เปลียนสีปุ่ม */
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom-color:hover {
+  background-color: #1a1919; /* เปลียนสีเวลาชี้ */
+  color: white;
+}
+
+.btn-custom-color:focus,
+.btn-custom-color:active {
+  box-shadow: none; /* เงา */
+  outline: none;
+}
+/*------------------------------------*/
+
+.profile-title {
+  background-color: #13502c; /* การไล่ระดับสีพื้นหลัง */
+  color: white;
+  padding: 15px 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* การเพิ่มเงา */
+  font-size: 24px; /* ขนาดฟอนต์ที่ใหญ่ขึ้น */
+  font-weight: bold; /* ทำให้ฟอนต์หนา */
+  text-transform: uppercase; /* ทำให้ข้อความเป็นตัวพิมพ์ใหญ่ทั้งหมด */
+  letter-spacing: 1px; /* เพิ่มระยะห่างระหว่างตัวอักษร */
+}
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+  /* Modal Title */
+  .modal-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Modal Body */
+.modal-body {
+    padding: 20px;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Package Option */
+.package-option h6 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+/* Button Style */
+.btn-package {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #007bff;
+    color: #007bff;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.btn-package:hover {
+    background-color: #007bff;
+    color: white;
+    border-color: #0056b3;
+}
+
+/* Close Button */
+.close {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+/* Modal Header */
+.modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+    
+}
+
+/* Modal Footer */
+.modal-footer {
+    padding: 15px;
+    border-top: 1px solid #ddd;
+}
+
+/* Responsive Design */
+@media (max-width: 576px) {
+    .modal-dialog {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .modal-content {
+        border-radius: 0;
+        height: 100%;
+        margin-top: 15px;
+    }
+
+    .btn-package {
+        font-size: 0.9rem;
+    }
+
+    .modal-header, .modal-footer {
+        padding: 10px;
+    }
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .profile-pic {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .profile-pic {
+    width: 45px;
+    height: 45px;
+  }
+}

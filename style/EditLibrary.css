@@ -1,0 +1,26 @@
+
+.modal-title{
+  color:black;
+}
+
+.play-button {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.play-button img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.faded {
+  opacity: 0.5; /* ทำให้ภาพจางลง */
+}
+.text-CheckDel{
+  color:black;
+}
+
+

@@ -1,0 +1,67 @@
+.footer {
+    background-color: #13502c;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2),
+                0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 5%; /* ลด padding เพื่อไม่ให้ล้น */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* ให้แต่ละคอลัมน์ยืดหยุ่นตามขนาดจอ */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 96px;
+    overflow: hidden; /* ป้องกันไม่ให้เนื้อหาล้นออก */
+    
+}
+
+.footer .column {
+    text-align: center;
+    max-width: 25%; /* จำกัดความกว้างของคอลัมน์ */
+    word-wrap: break-word; /* ตัดข้อความยาวให้ลงบรรทัดใหม่ */
+    flex: 1 1 200px; /* ให้คอลัมน์ยืดหยุ่นได้ */
+}
+
+.footer h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.footer ul li {
+    margin: 8px 0;
+}
+
+.footer ul li a {
+    color: #b3b3b3;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer ul li a:hover {
+    color: #1DB954;
+}
+
+/* ปรับให้ข้อความใน footer ไม่ล้น */
+.footer-bottom {
+    text-align: center;
+    font-size: 12px;
+    color: #b3b3b3;
+    margin-top: 10px;
+}
+
+/* ป้องกันข้อความใน footer ล้นออกจากจอ */
+.footer .column ul li a {
+    white-space: normal; /* อนุญาตให้ข้อความยาวลงบรรทัดใหม่ */
+    word-break: break-word; /* ตัดคำยาวเพื่อไม่ให้ล้น */
+}
