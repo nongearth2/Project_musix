@@ -273,6 +273,7 @@ input[type="checkbox"]:checked + .star {
     margin-top: 0px;
 }
 }
+
 @media (max-width: 320px) {
   /* ลดขนาดของ textMix-header และ LabelMix สำหรับหน้าจอมือถือ */
   .textMix-header, .LabelMix {
@@ -310,3 +311,4 @@ input[type="checkbox"]:checked + .star {
   width: 60px;
 }
 }
+

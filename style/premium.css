@@ -1,0 +1,72 @@
+.premium-section{
+    margin-top: 125px;
+}
+.title {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    margin: 10px 0 30px;
+}
+
+.packages {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.package {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: left;
+    color: #000;
+}
+.package h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+.package ul {
+    list-style: none;
+    padding: 0;
+}
+.package ul li {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+.package ul li i {
+    margin-right: 10px;
+    color: #1DB954;
+}
+.btnPremium {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #1DB954;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+}
+.btnPremium:hover {
+    background-color: #188c40;
+    text-decoration: none;
+}
+@media (max-width: 430px){
+    .packages {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-bottom: 50px; /* เพิ่มระยะห่างด้านล่างเพื่อไม่ให้ footer บัง */
+    }
+    .premium-section{
+        margin-top: 125px;
+        padding-bottom:90px; /* เพิ่มระยะห่างด้านล่างเพื่อไม่ให้ footer บัง */
+    }
+    
+}

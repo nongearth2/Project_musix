@@ -187,13 +187,16 @@ $packages = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
                                 <div class="status-button-container">
                                     <?php if ($buttonText): ?>
-                                    <button class="btn btn-primary" onclick="showPackageOptions()">
+                                    <button class="btn btn-primary"
+                                        onclick="window.location.href='../page/premium.php';">
                                         <?php echo htmlspecialchars($buttonText); ?>
                                     </button>
                                     <?php endif; ?>
 
+
                                     <?php if ($buttonTextPremium): ?>
-                                    <button class="btn btn-primary" onclick="showPackageOptions()">
+                                    <button class="btn btn-primary"
+                                        onclick="window.location.href='../page/premium.php';">
                                         <?php echo htmlspecialchars($buttonTextPremium); ?>
                                     </button>
                                     <?php endif; ?>
@@ -318,7 +321,9 @@ $packages = mysqli_fetch_all($result, MYSQLI_ASSOC);
                     <div class="package-option mb-3">
                         <h6><?php echo htmlspecialchars($package['package_detail']); ?></h6>
                         <button class="btn btn-outline-primary btn-package"
-                            onclick="purchasePackage('<?php echo htmlspecialchars($package['package_id']); ?>')">ซื้อแพ็คเกจ</button>
+                            onclick="window.location.href='../page/premium.php';">
+                            ซื้อแพ็คเกจ
+                        </button>
                     </div>
                     <?php endforeach; ?>
                 </div>
@@ -582,7 +587,8 @@ if (isset($_POST['new_member_name']) || isset($_POST['font_color'])) {
                     cancelButtonText: 'ปิดหน้า'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        $('#packageModal').modal('show');
+                        // เปลี่ยนเส้นทางไปหน้า ../page/premium.php
+                        window.location.href = '../page/premium.php';
                     } else {
                         window.close();
                     }
@@ -654,4 +660,5 @@ if (isset($_POST['new_member_name']) || isset($_POST['font_color'])) {
 <?php
 include('../include/footer.php');
 ?>
+
 </html>

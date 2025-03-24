@@ -1,6 +1,7 @@
 <?php
 include ('../include/header.php');
 ?>
+
 <?php
      if (!isset($_SESSION['member_id'])) {
         echo '<script>
@@ -287,13 +288,15 @@ while ($fetch_list = $select_lists->fetch_assoc()) {
 
 
 </main>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
+<!-- JS ของ Bootstrap (ต้องการ Popper.js) -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script> -->
 <script src="../scripts/Soundmix.js "></script>
 </body>
 
 </html>
 <?php
-
 include('../include/footer.php');
 
 ?>
