@@ -3,25 +3,26 @@ function showSongsByCategory(category) {
     audioControls.innerHTML = ''; // ลบปุ่มที่ไม่ได้ใช้ในหน้าที่เลือกออก
 
     if (audioFiles[category]) {
-        // แยกเสียงที่เปิดใช้งานและปิดใช้งาน
         const enabledFiles = audioFiles[category].filter(file => file.working_status === '1');
         const disabledFiles = audioFiles[category].filter(file => file.working_status === '0');
-
-        // รวมเสียงที่เปิดใช้งานก่อน และตามด้วยเสียงที่ปิดใช้งาน
         const sortedFiles = [...enabledFiles, ...disabledFiles];
 
         sortedFiles.forEach(file => {
             const soundItem = document.createElement('div');
             soundItem.className = 'sound-item';
 
+            // เพิ่มคลาส disabled หาก working_status = 0
+            if (file.working_status === '0') {
+                soundItem.classList.add('disabled');
+            }
+
             const soundImage = document.createElement('img');
             soundImage.src = file.image;
             soundImage.alt = file.id;
             soundImage.className = 'sound-image';
 
-            // ตรวจสอบ working_status
             if (file.working_status === '0') {
-                soundImage.classList.add('disabled-sound'); // เพิ่มคลาสให้ภาพ
+                soundImage.classList.add('disabled-sound');
                 soundImage.alt = 'เสียงนี้ถูกปิดใช้งาน';
                 soundImage.title = 'เสียงนี้ถูกปิดใช้งาน';
                 soundImage.onclick = () => {
@@ -91,29 +92,44 @@ function adjustVolume(audioId, volume) {
     const volumePercentage = soundItem.querySelector('.volume-percentage');
     volumePercentage.innerHTML = `${volume}%`;
 }
-
 function displayCategoryButtons() {
     const categoryButtons = document.getElementById('categoryButtons');
     categoryButtons.innerHTML = '';
 
     for (const [id, name] of Object.entries(categories)) {
         const button = document.createElement('button');
-        button.innerHTML = name; // ใช้ชื่อหมวดหมู่
-        button.onclick = () => showSongsByCategory(id);
+        button.innerHTML = name;
+        button.classList.add('category-button'); // เพิ่มคลาสสำหรับสไตล์
+        button.onclick = () => {
+            showSongsByCategory(id);
+            setActiveCategory(id); // กำหนดให้ปุ่มที่เลือกมีเอฟเฟกต์ hover ค้างไว้
+        };
         categoryButtons.appendChild(button);
     }
 }
 
+// ฟังก์ชันกำหนดปุ่มหมวดหมู่ที่ถูกเลือก
+function setActiveCategory(selectedId) {
+    const buttons = document.querySelectorAll('.category-button');
+    buttons.forEach(button => {
+        if (button.innerHTML === categories[selectedId]) {
+            button.classList.add('active'); // เพิ่มคลาส active
+        } else {
+            button.classList.remove('active'); // ลบคลาสออกจากปุ่มที่ไม่ได้ถูกเลือก
+        }
+    });
+}
 
 // แสดงปุ่มหมวดหมู่และเพลงทั้งหมดเมื่อโหลดหน้า
 window.onload = function () {
     displayCategoryButtons();
-    // ใช้หมวดหมู่แรกเพื่อเริ่มต้นแสดงเพลง
     const firstCategoryId = Object.keys(categories)[0];
     if (firstCategoryId) {
         showSongsByCategory(firstCategoryId);
+        setActiveCategory(firstCategoryId);
     }
 };
+
 /*!
 * Start Bootstrap - Business Casual v7.0.9 (https://startbootstrap.com/theme/business-casual)
 * Copyright 2013-2023 Start Bootstrap
@@ -146,18 +162,5 @@ document.getElementById('logoutLink').addEventListener('click', function(event) 
     });
 });
 
-window.onscroll = function() {
-    var scrollButton = document.getElementById("scrollToTopButton");
-    
-    // ตรวจสอบว่าเลื่อนถึงด้านล่างสุดของหน้าแล้วหรือยัง
-    if (document.documentElement.scrollTop + window.innerHeight >= document.documentElement.scrollHeight) {
-        scrollButton.classList.add("show");
-    } else {
-        scrollButton.classList.remove("show");
-    }
-};
 
-// ฟังก์ชันเลื่อนกลับไปที่ด้านบน
-function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+

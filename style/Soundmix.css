@@ -60,7 +60,7 @@ input[type="checkbox"]:checked + .star {
   display: flex;
   align-items: center;
   flex: 0 1 300px;
-  margin-right: 20px;
+  margin-right: 105px;
   margin-bottom: 20px;
   box-sizing: border-box;
   position: relative;
@@ -244,7 +244,7 @@ input[type="checkbox"]:checked + .star {
 
 
 
-@media (max-width: 480px) {
+@media (max-width: 430px) {
   /* ลดขนาดของ textMix-header และ LabelMix สำหรับหน้าจอมือถือ */
   .textMix-header, .LabelMix {
     font-size: 18px;
@@ -260,4 +260,53 @@ input[type="checkbox"]:checked + .star {
     width: 25px;
     height: 25px;
   }
+  .btn-SoundMix:disabled {
+    background-color: #919191;
+    width: 110px;
+    font-size: 11px;
+    margin-top: 0px;
+}
+.btn-SoundMix {
+  background-color: #00b609;
+  width: 110px;
+    font-size: 11px;
+    margin-top: 0px;
+}
+}
+@media (max-width: 320px) {
+  /* ลดขนาดของ textMix-header และ LabelMix สำหรับหน้าจอมือถือ */
+  .textMix-header, .LabelMix {
+    font-size: 15px;
+  }
+
+  /* ปรับ layout ของ star container */
+  .star-container {
+    margin-right: 5px; /* ลดระยะห่าง */
+  }
+
+  /* ปรับขนาดของ star */
+  .star {
+    width: 25px;
+    height: 25px;
+  }
+  .btn-SoundMix:disabled {
+    background-color: #919191;
+    width: 61px;
+    font-size: 9px;
+    margin-top: 0px;
+}
+.btn-SoundMix {
+  background-color: #00b609;
+  width: 61px;
+    font-size: 9px;
+    margin-top: 0px;
+}
+.soundMix-item {
+  flex: 0 1 100%; /* ให้ขยายเต็มความกว้าง */
+  margin-right: 0;
+  width: 15px;
+}
+.volume-slider {
+  width: 60px;
+}
 }

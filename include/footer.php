@@ -10,3 +10,5 @@
     </footer>
 </body>
 </html>
+<script src="../scripts/scroll.js"></script>
+<script src="../scripts/BurgerBar.js"></script>

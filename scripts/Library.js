@@ -124,24 +124,28 @@ volumeIcon.addEventListener('click', function() {
     function showSongsByCategory(category) {
         currentCategory = category;
         updateAudioElements();
-
+    
         const audioControls = document.getElementById('audioControls');
         audioControls.innerHTML = ''; // ล้างการควบคุมที่มีอยู่
-
+    
         if (audioFiles[category]) {
             audioFiles[category].forEach(file => {
                 const soundItem = document.createElement('div');
                 soundItem.className = 'sound-item';
-
+    
+                // สร้างภาพของเสียง
                 const soundImage = document.createElement('img');
-                soundImage.src = file.image || 'default-image.png';
+                soundImage.src = file.image || 'default-image.png'; // กำหนดภาพเริ่มต้น
                 soundImage.alt = file.id;
                 soundImage.className = 'sound-image';
-
+    
+                // ถ้า working_status = 0 (ปิดใช้งาน)
                 if (file.working_status === '0') {
                     soundImage.classList.add('disabled-sound');
                     soundImage.alt = 'เสียงนี้ถูกปิดใช้งาน';
                     soundImage.title = 'เสียงนี้ถูกปิดใช้งาน';
+                    soundItem.classList.add('disabled'); // เพิ่มคลาส disabled ให้กับ sound-item
+    
                     soundImage.onclick = () => {
                         Swal.fire({
                             icon: 'warning',
@@ -150,41 +154,47 @@ volumeIcon.addEventListener('click', function() {
                         });
                     };
                 } else {
+                    soundImage.classList.remove('disabled-sound');
                     soundImage.onclick = () => togglePlay(file.id, soundItem);
                 }
-
+    
+                // สร้างตัวควบคุมระดับเสียง
                 const volumeSlider = document.createElement('input');
                 volumeSlider.type = 'range';
-                volumeSlider.id = `volume-slider-${file.id}`; // เพิ่ม ID สำหรับอ้างอิงเสียงแต่ละเสียง
+                volumeSlider.id = `volume-slider-${file.id}`;
                 volumeSlider.className = 'volume-slider';
                 volumeSlider.min = 0;
                 volumeSlider.max = 100;
-                volumeSlider.value = 50; // ค่าเริ่มต้น 50%
+                volumeSlider.value = 50; // ค่าเริ่มต้นที่ 50%
                 volumeSlider.oninput = () => adjustVolume(file.id, volumeSlider.value);
-
+    
+                // แสดงเปอร์เซ็นต์ระดับเสียง
                 const volumePercentage = document.createElement('span');
                 volumePercentage.className = 'volume-percentage';
                 volumePercentage.innerHTML = ` ${volumeSlider.value}%`;
-
+    
                 volumeSlider.addEventListener('input', function () {
-                    volumePercentage.innerHTML = `${volumeSlider.value}%`; // อัปเดตการแสดงระดับเสียงทันที
+                    volumePercentage.innerHTML = `${volumeSlider.value}%`; // อัปเดตเปอร์เซ็นต์เสียงทันที
                 });
-
+    
+                // สร้างตัวเสียง (audio element)
                 const audioElement = document.createElement('audio');
                 audioElement.id = file.id;
                 audioElement.src = file.src;
                 audioElement.loop = true;
-
+    
+                // เพิ่ม element ต่างๆ เข้าไปใน soundItem
                 soundItem.appendChild(soundImage);
                 soundItem.appendChild(volumeSlider);
                 soundItem.appendChild(volumePercentage);
                 soundItem.appendChild(audioElement);
-
+    
+                // เพิ่ม soundItem เข้าไปใน audioControls
                 audioControls.appendChild(soundItem);
             });
-            
         }
     }
+    
 
     function togglePlay(audioId, soundItem) {
         var audio = document.getElementById(audioId);
@@ -214,26 +224,43 @@ volumeIcon.addEventListener('click', function() {
     
         for (const [id, name] of Object.entries(categories)) {
             const button = document.createElement('button');
+            button.classList.add('category-button'); // เพิ่มคลาสปุ่ม
             button.innerHTML = name;
+    
             button.onclick = () => {
+                // ลบคลาส active จากปุ่มทั้งหมด
+                document.querySelectorAll('.category-button').forEach(btn => btn.classList.remove('active'));
+    
+                // เพิ่มคลาส active ให้ปุ่มที่ถูกคลิก
+                button.classList.add('active');
+    
+                // แสดงเพลงของหมวดหมู่ที่เลือก
                 showSongsByCategory(id);
-                audioElements.forEach(audio => {
+    
+                // หยุดเสียงทั้งหมดเมื่อเปลี่ยนหมวดหมู่
+                document.querySelectorAll('audio').forEach(audio => {
                     audio.pause();
                     audio.currentTime = 0;
                 });
             };
+    
             categoryButtons.appendChild(button);
         }
     }
-
+    
     // แสดงปุ่มหมวดหมู่และแสดงเพลงหมวดหมู่แรกเมื่อโหลดหน้า
     window.onload = function () {
         displayCategoryButtons();
+    
+        // เลือกหมวดหมู่แรกและทำให้ active
         const firstCategoryId = Object.keys(categories)[0];
         if (firstCategoryId) {
             showSongsByCategory(firstCategoryId);
+            const firstButton = document.querySelector('.category-button');
+            if (firstButton) firstButton.classList.add('active');
         }
     };
+    
 });
 
 // เพิ่ม Event Listener ให้กับปุ่ม "ออกจากระบบ"

@@ -1,7 +1,6 @@
 <?php
 include ('../include/header.php');
 ?>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <?php
      if (!isset($_SESSION['member_id'])) {
         echo '<script>
@@ -64,7 +63,7 @@ include ('../include/header.php');
         }
     }
     ?>
-</center>
+
 <!-- เมนูโปรไฟล์ -->
 <nav class="navbar navbar-expand-lg menu navbar-background fixed-top">
     <div class="container-fluid">
@@ -75,9 +74,10 @@ include ('../include/header.php');
 
         <!-- โชวสามขีด  การแสดงผลให้เป็นในโทรศัพท์ -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation" id="navbarToggleBtn">
+            <i class="fas fa-bars"></i>
         </button>
+
 
         <!-- เมนู -->
         <div class="collapse navbar-collapse" id="navbarContent">
@@ -114,7 +114,6 @@ include ('../include/header.php');
     </div>
 </nav>
 
-</head>
 
 <!-- คำสั่ง php -->
 <?php
@@ -290,10 +289,11 @@ while ($fetch_list = $select_lists->fetch_assoc()) {
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../scripts/Soundmix.js "></script>
-
 </body>
 
 </html>
 <?php
+
 include('../include/footer.php');
+
 ?>

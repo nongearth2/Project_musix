@@ -1,23 +1,12 @@
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .menu {
-    flex-direction: column;
-    gap: 10px;
-  }
 
-  .profile-pic {
-    width: 40px;
-    height: 40px;
-  }
+.custom-flex-container {
+  display: flex;
+  justify-content: center; /* จัดให้อยู่กึ่งกลางแนวนอน */
+  align-items: center; /* จัดให้อยู่กึ่งกลางแนวตั้ง */
+  flex-wrap: wrap; /* ให้ไอเท็มขึ้นบรรทัดใหม่เมื่อหน้าจอแคบ */
+  gap: 15px; /* ระยะห่างระหว่างปุ่ม */
+  padding: 10px; /* เพิ่มระยะห่างรอบขอบ */
 }
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .profile-pic {
-    width: 45px;
-    height: 45px;
-  }
-}
-
 /* ปรับปรุงลักษณะของปุ่ม */
 .btn-startMusic {
   background-color: #007bff;
@@ -165,4 +154,48 @@
   border: none;
   box-shadow: -100px 0 5px 100px var(--level-color),
     -100px 0px 20px 100px var(--level-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .profile-pic {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 430px) {
+  .custom-flex-container {
+    display: flex
+;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 10px;
+    margin-bottom: 100px;
+    margin-top: -80px;
+}
+.scroll-to-top-btn.show {
+  bottom: 245px !important; 
+}
+.btn-startMusic {
+  background-color: #007bff;
+  border-color: #007bff;
+  transition: background-color 0.3s, border-color 0.3s;
+  width: 109px;
+  font-size: 12px;
+}
+.btn-stopMusic {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  transition: background-color 0.3s, border-color 0.3s;
+  width: 109px;
+  font-size: 12px;
+}
 }

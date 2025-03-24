@@ -53,9 +53,11 @@ $packages = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 <a class="navbar-brand" href="Show_music.php">
                     <img src="../Logo/LogoRSZ.png" width="40" height="40" alt="logo"> RelaxSoundZone
                 </a>
+                <!-- โชวสามขีด  การแสดงผลให้เป็นในโทรศัพท์ -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation"
+                    id="navbarToggleBtn">
+                    <i class="fas fa-bars"></i> <!-- ไอคอนสามขีด (เปิดเมนู) -->
                 </button>
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -85,14 +87,14 @@ $packages = mysqli_fetch_all($result, MYSQLI_ASSOC);
             </div>
         </nav>
         <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center" style="padding-top: 80px;">
+            <div class="row d-flex justify-content-center" style="padding-top: 80px; margin-bottom: 100px;">
                 <div class="col col-lg-9 col-xl-8">
                     <div class="card">
                         <h4 class="profile-title">ข้อมูลโปรไฟล์</h4>
                         <div class="rounded-top text-white d-flex flex-row" id="background-container"
                             style="background-color: <?php echo htmlspecialchars($arr_profile['background_color']); ?>; height: 200px;">
                             <button type="button" class="btn btn-custom-color" data-bs-toggle="modal"
-                                data-bs-target="#colorPickerModal" style="position: absolute; top: 10px; right: 10px;"
+                                data-bs-target="#colorPickerModal" style="position: absolute; top: 5px; right: 10px;"
                                 title="เปลียนสีพื้นหลัง">
                                 <i class="fas fa-palette"></i>
                             </button>
@@ -122,14 +124,16 @@ $packages = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
                             <?php if ($packageBought): ?>
                             <!-- แสดงเวลาที่เหลือถ้าซื้อแพ็กเกจแล้ว -->
-                            <div id="countdown_status"
-                                style="position: absolute; bottom: 10px; left: 10px; background-color: rgba(0, 0, 0, 0.6); padding: 10px; border-radius: 5px;">
-                                <h6>แพ็กเกจปัจจุบัน: <?php echo htmlspecialchars($arr_package['package_detail']); ?>
-                                </h6>
-                                <h6>เวลาที่ใช้งานได้: <span
-                                        id="remainingTime"><?php echo htmlspecialchars($arr_package['package_time']); ?></span>
-                                    วินาที</h6>
+                            <div class="countdown-timer">
+                                <svg class="progress-ring" width="80" height="80">
+                                    <circle class="progress-ring__circle" stroke="white" stroke-width="6"
+                                        fill="transparent" r="35" cx="40" cy="40" />
+                                </svg>
+                                <span id="remainingTime" class="countdown-text">
+                                    <?php echo htmlspecialchars($arr_package['package_time']); ?>
+                                </span>
                             </div>
+
                             <?php else: ?>
                             <!-- แจ้งเตือนถ้ายังไม่ได้ซื้อแพ็กเกจ -->
                             <script>
@@ -152,52 +156,51 @@ $packages = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
                         </div>
                         <div class="p-4 text-black bg-body-tertiary">
-                            <div class="d-flex justify-content-end text-center py-1 text-body">
+                            <div class="status-container text-center text-body">
                                 <?php
-                                $status = $arr_profile['status_id'];
-                                $statusText = '';
-                                $backgroundColor = '';
-                                $buttonText = '';
-                                $buttonAction = '';
-                                $buttonTextPremium = ''; 
+        $status = $arr_profile['status_id'];
+        $statusText = '';
+        $backgroundColor = '';
+        $buttonText = '';
+        $buttonTextPremium = ''; 
 
-                                switch ($status) {
-                                    case 1:
-                                        $statusText = 'ผู้ดูแลระบบ';
-                                        $backgroundColor = 'linear-gradient(to right, #FF5733, #FFC300)'; // สีแดงเข้มถึงสีส้ม สำหรับผู้ดูแลระบบ
-                                        break;
-                                    case 2:
-                                        $statusText = 'สมาชิกพรีเมียม';
-                                        $backgroundColor = 'linear-gradient(to right, #FFD700, #FFEA00)'; // สีทอง สำหรับสมาชิกพรีเมียม
-                                        $buttonTextPremium = 'ซื้อแพ็คเกจพรีเมียม';
-                                        break;
-                                    case 3:
-                                        $statusText = 'สมาชิกทั่วไป';
-                                        $backgroundColor = 'linear-gradient(to right, #87CEFA, #00BFFF)'; // สีน้ำเงินอ่อนถึงเข้ม สำหรับสมาชิกทั่วไป
-                                        $buttonText = 'สมัครสมาชิกพรีเมียม';
-                                        break;
-                                
-                                }
-                                ?>
-                                <p class="mb-1 h5"
-                                    style="background: <?php echo $backgroundColor; ?>;margin: 15px; color: white; padding: 5px; border-radius: 5px; ">
+        switch ($status) {
+            case 1:
+                $statusText = 'ผู้ดูแลระบบ';
+                $backgroundColor = 'linear-gradient(to right, #FF5733, #FFC300)'; // สีแดงเข้มถึงสีส้ม สำหรับผู้ดูแลระบบ
+                break;
+            case 2:
+                $statusText = 'สมาชิกพรีเมียม';
+                $backgroundColor = 'linear-gradient(to right, #FFD700, #FFEA00)'; // สีทอง สำหรับสมาชิกพรีเมียม
+                $buttonTextPremium = 'ซื้อแพ็คเกจพรีเมียม';
+                break;
+            case 3:
+                $statusText = 'สมาชิกทั่วไป';
+                $backgroundColor = 'linear-gradient(to right, #87CEFA, #00BFFF)'; // สีน้ำเงินอ่อนถึงเข้ม สำหรับสมาชิกทั่วไป
+                $buttonText = 'สมัครสมาชิกพรีเมียม';
+                break;
+        }
+        ?>
+                                <p class="status-text" style="background: <?php echo $backgroundColor; ?>;">
                                     <?php echo htmlspecialchars($statusText); ?>
                                 </p>
-                                <br>
-                                <!-- Normal -->
-                                <?php if ($buttonText): ?>
-                                <button id="payButton" class="btn btn-primary"
-                                    onclick="showPackageOptions()"><?php echo htmlspecialchars($buttonText); ?></button>
-                                <?php endif; ?>
-                                <!-- ---------- -->
-                                <!-- Premium -->
-                                <?php if ($buttonTextPremium): ?>
-                                <button id="payButton" class="btn btn-primary"
-                                    onclick="showPackageOptions()"><?php echo htmlspecialchars($buttonTextPremium); ?></button>
-                                <?php endif; ?>
-                                <!---------- -->
+
+                                <div class="status-button-container">
+                                    <?php if ($buttonText): ?>
+                                    <button class="btn btn-primary" onclick="showPackageOptions()">
+                                        <?php echo htmlspecialchars($buttonText); ?>
+                                    </button>
+                                    <?php endif; ?>
+
+                                    <?php if ($buttonTextPremium): ?>
+                                    <button class="btn btn-primary" onclick="showPackageOptions()">
+                                        <?php echo htmlspecialchars($buttonTextPremium); ?>
+                                    </button>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
+
                         <div class="card-body p-4 text-black">
                             <div class="mb-5 text-body">
                                 <p class="lead fw-normal mb-1">รายการคลัง</p>
@@ -560,45 +563,45 @@ if (isset($_POST['new_member_name']) || isset($_POST['font_color'])) {
 
     document.addEventListener('DOMContentLoaded', function() {
         const remainingTimeElement = document.getElementById('remainingTime');
-        const initialTime = parseInt(remainingTimeElement.innerText); // รับค่าเวลาที่เหลือเป็นวินาที
+        const circle = document.querySelector('.progress-ring__circle');
 
+        const initialTime = parseInt(remainingTimeElement.innerText);
         let timeLeft = initialTime;
-        let alertShown = false; // ตัวแปรสำหรับเก็บสถานะการแสดงแจ้งเตือน
+        let alertShown = false;
+        const totalCircleLength = 220;
 
         const countdownInterval = setInterval(() => {
-            // เช็คว่าเวลาที่เหลืออยู่เหลือ 15 วินาทีหรือไม่ และยังไม่แสดงแจ้งเตือน
             if (timeLeft <= 15 && timeLeft > 0 && !alertShown) {
-                alertShown = true; // ตั้งค่าให้แสดงแจ้งเตือนแล้ว
+                alertShown = true;
                 Swal.fire({
                     title: 'เวลาใกล้หมดแล้ว!',
-                    text: 'เวลาที่เหลือ: ' + timeLeft +
-                        ' วินาที\nต้องการซื้อแพ็กเกจเพิ่มอีกหรือไม่?',
+                    text: `เวลาที่เหลือ: ${timeLeft} วินาที\nต้องการซื้อแพ็กเกจเพิ่มอีกหรือไม่?`,
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonText: 'ซื้อแพ็กเกจ',
                     cancelButtonText: 'ปิดหน้า'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        // แสดงโมดัลเลือกแพ็กเกจ
-                        $('#packageModal').modal('show'); // แสดงโมดัล
+                        $('#packageModal').modal('show');
                     } else {
-                        // ปิดหน้า
-                        window
-                            .close(); // ปิดหน้า (หรือใช้ location.href = 'about:blank'; เพื่อเปลี่ยนไปหน้าว่าง)
+                        window.close();
                     }
                 });
             }
 
             if (timeLeft <= 0) {
                 clearInterval(countdownInterval);
-                // อัปเดต status_id เป็น 3 ในฐานข้อมูล
-                updateUserStatus();
+                updateUserStatus(); // อัปเดตเป็นสมาชิกทั่วไป
                 return;
             }
 
             timeLeft--;
-            remainingTimeElement.innerText = timeLeft; // อัปเดตเวลาใน UI
-        }, 1000); // ตั้งเวลาทุก 1 วินาที
+            remainingTimeElement.innerText = timeLeft;
+
+            // คำนวณค่าความยาวของ stroke-dashoffset ให้ลดลง
+            const progress = (timeLeft / initialTime) * totalCircleLength;
+            circle.style.strokeDashoffset = totalCircleLength - progress;
+        }, 1000);
 
         function updateUserStatus() {
             fetch('../process/update_status.php', { // ชื่อไฟล์ที่อัปเดต status_id
@@ -648,8 +651,7 @@ if (isset($_POST['new_member_name']) || isset($_POST['font_color'])) {
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 </body>
-
-</html>
 <?php
 include('../include/footer.php');
 ?>
+</html>

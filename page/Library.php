@@ -72,8 +72,8 @@
 
             <!-- โชวสามขีด  การแสดงผลให้เป็นในโทรศัพท์ -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation" id="navbarToggleBtn">
+                <i class="fas fa-bars"></i> <!-- ไอคอนสามขีด (เปิดเมนู) -->
             </button>
 
             <!-- เมนู -->
@@ -129,28 +129,28 @@
         </div>
         <div id="audioControls"></div>
         <center>
-            <div class="container my-4">
-                <div class="d-flex justify-content-center align-items-center mb-3">
-                    <button id="playListBtn" class="btn-startMusic me-2"><i class="fa-solid fa-play"></i>
-                        เริ่มเล่นเสียงในลิสต์</button>
-                    <button id="stopListBtn" class="btn-stopMusic me-2"><i class="fa-solid fa-pause"></i>
-                        หยุดเล่นเสียงในลิสต์</button>
-                    <div class="d-flex align-items-center">
-                        <!-- แทนที่โค้ด volume control ด้วยรูปแบบใหม่ -->
-                        <label class="slider">
-                            <input type="range" class="level" id="volumeControl" min="0" max="100" step="1"
-                                value="50" />
-                            <i class="fa-solid fa-volume-high icon-volum" id="volumeIcon"></i>
-                        </label>
-
-                        <span id="volumePercentage" class="ms-2">50%</span> <!-- Display volume percentage -->
-                    </div>
+            <div class="custom-flex-container">
+                <button id="playListBtn" class="btn-startMusic"><i class="fa-solid fa-play"></i>
+                    เริ่มเล่นเสียงในลิสต์</button>
+                <button id="stopListBtn" class="btn-stopMusic"><i class="fa-solid fa-pause"></i>
+                    หยุดเล่นเสียงในลิสต์</button>
+                <div class="d-flex align-items-center">
+                    <label class="slider">
+                        <input type="range" class="level" id="volumeControl" min="0" max="100" step="1" value="50" />
+                        <i class="fa-solid fa-volume-high icon-volum" id="volumeIcon"></i>
+                    </label>
+                    <span id="volumePercentage" class="ms-2">50%</span>
                 </div>
             </div>
 
+
         </center>
     </main>
-
+    <div id="scrollToTopButton" class="scroll-to-top-btn">
+        <button onclick="scrollToTop()">
+            <i class="fas fa-arrow-up"></i> <!-- ไอคอนลูกศรขึ้น -->
+        </button>
+    </div>
 
     <?php
 // ตรวจสอบการเชื่อมต่อฐานข้อมูล

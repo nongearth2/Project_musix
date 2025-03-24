@@ -2,13 +2,18 @@
 
 <center>
     <?php
+   
     if (!isset($_SESSION['member_id'])) {
         echo '<nav class="navbar navbar-expand-lg menu navbar-background fixed-top">';
         echo '    <div class="container-fluid">';
         echo '        <a class="navbar-brand" href="Show_music.php">';
         echo '            <img src="../Logo/LogoRSZ.png" width="50" height="50" alt="logo"> RelaxSoundZone';
         echo '        </a>';
-        echo '        <!-- เมนูหลักใน navbar -->';
+        echo '        <!-- ปุ่มเบอร์เกอร์ สำหรับหน้าจอมือถือ -->';
+        echo '        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"';
+        echo '            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation" id="navbarToggleBtn">';
+        echo '            <i class="fas fa-bars"></i> <!-- ไอคอนสามขีด (เปิดเมนู) -->';
+        echo '        </button>';
         echo '        <div class="collapse navbar-collapse" id="navbarContent">';
         echo '            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">';
         echo '                <li class="nav-item">';
@@ -21,7 +26,9 @@
         echo '        </div>';
         echo '    </div>';
         echo '</nav>';
-    } else {
+    }
+    
+     else {
         $id = $_SESSION['member_id'];
         $sql_profile = "SELECT * FROM member WHERE member_id='$id'";
         $sql_menu = "SELECT status_id FROM member WHERE member_id='$id'";
@@ -42,9 +49,10 @@
 
         <!-- โชวสามขีด  การแสดงผลให้เป็นในโทรศัพท์ -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation" id="navbarToggleBtn">
+            <i class="fas fa-bars"></i> <!-- ไอคอนสามขีด (เปิดเมนู) -->
         </button>
+
 
         <!-- เมนู -->
         <div class="collapse navbar-collapse" id="navbarContent">
@@ -108,10 +116,10 @@
 
         <div id="audioControls"></div>
         <div id="scrollToTopButton" class="scroll-to-top-btn">
-                <button onclick="scrollToTop()">
-                    <i class="fas fa-arrow-up"></i> <!-- ไอคอนลูกศรขึ้น -->
-                </button>
-            </div>
+            <button onclick="scrollToTop()">
+                <i class="fas fa-arrow-up"></i> <!-- ไอคอนลูกศรขึ้น -->
+            </button>
+        </div>
     </center>
 </main>
 
@@ -228,4 +236,3 @@ const categories = <?php echo json_encode($categories); ?>;
 <?php
 include('../include/footer.php');
 ?>
-
